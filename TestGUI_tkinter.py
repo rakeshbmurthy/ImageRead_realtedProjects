@@ -11,32 +11,31 @@
 #
 #
 # main()
-from tkinter import *
+from Tkinter import *
 
 
-# variable_1 = StringVar()
+root = Tk()
+var = StringVar()
+label = Label( root, textvariable=var, relief=RAISED )
+
+var.set("Hey!? How are you doing?")
+label.pack()
+
+text_1 = Text(root, height = 2, width = 30)
+text_1.pack()
+
+text = Text(root, height = 2, width = 30)
+text.pack()
+text.insert(END, '-')
 
 
-def show_entry_fields():
-    print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
-    # variable_1.get()
-    e1.delete(0, END)
-    e2.delete(0, END)
+def btnpress():
+    text.delete('1.1', END)
+    text.insert(END, text_1.get("1.0",'end-1c'))
 
 
-master = Tk()
-Label(master, text="First Name").grid(row=0)
-Label(master, text="Last Name").grid(row=1)
+btn = Button(root, text = 'attach', width = 5, command = btnpress)
+btn.pack()
 
-e1 = Entry(master)
-e2 = Entry(master)
 
-e1.grid(row=0, column=1)
-e2.grid(row=1, column=1)
-
-e2.grid(row=1, column=1)
-
-Button(master, text='Quit', command=master.quit).grid(row=3, column=0, sticky=W, pady=4)
-Button(master, text='Show', command=show_entry_fields).grid(row=3, column=1, sticky=W, pady=4)
-
-mainloop()
+root.mainloop()
